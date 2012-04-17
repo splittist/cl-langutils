@@ -41,7 +41,7 @@
 	      (add-basic-entry (car lexicon-entry) (mapcar #'mkkeysym (cdr lexicon-entry))))))
 	(write-log lexicon-init "Reading word->lemma data from ~A" lemma-file)
 	;; Parse the lines into a predicate ID and possible roots
-	(with-open-file ( s lemma-file :external-format :ascii)
+	(with-open-file ( s lemma-file :external-format :latin1)
 	  (do-count-contentful-lines (l count s)
 	    (when (= (mod count 10000) 0) (write-log lexicon-init "Processed ~A lines" count))
 	    (let ((roots-entry (extract-words l)))
